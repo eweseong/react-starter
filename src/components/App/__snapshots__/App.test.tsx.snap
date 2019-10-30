@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<ErrorBoundary
+  FallbackComponent={[Function]}
+>
+  <div
+    className="App"
+  >
+    title
+  </div>
+</ErrorBoundary>
+`;

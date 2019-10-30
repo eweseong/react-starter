@@ -1,0 +1,86 @@
+{
+  "name": "sample-form-at",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "cpy-cli": "^2.0.0",
+    "cross-env": "^6.0.3",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
+    "husky": "^3.0.9",
+    "jest-enzyme": "^7.1.2",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2",
+    "react-scripts": "3.2.0",
+    "source-map-explorer": "^2.1.0"
+  },
+  "dependencies": {
+    "@types/enzyme": "^3.10.3",
+    "@types/jest": "24.0.21",
+    "@types/node": "12.12.0",
+    "@types/react": "16.9.11",
+    "@types/react-dom": "16.9.3",
+    "@types/react-router-dom": "^5.1.1",
+    "i18next": "^19.0.0",
+    "react": "^16.11.0",
+    "react-app-polyfill": "^1.0.4",
+    "react-dom": "^16.11.0",
+    "react-error-boundary": "^1.2.5",
+    "react-i18next": "^11.0.1",
+    "react-router-dom": "^5.1.2",
+    "typescript": "3.6.4"
+  },
+  "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "start": "react-scripts start",
+    "build": "cross-env CI=true react-scripts build && cpy build/index.html build --rename=200.html",
+    "test": "react-scripts test",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test -- --watchAll=false && npm run build"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not op_mini all",
+      "ie 11"
+    ],
+    "development": [
+      "last 2 chrome version",
+      "last 2 firefox version",
+      "last 2 safari version",
+      "last 2 edge versions"
+    ]
+  }
+}
